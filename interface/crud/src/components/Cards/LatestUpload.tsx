@@ -1,0 +1,45 @@
+import { EllipsisVertical, Pencil } from "lucide-react";
+
+interface Props {
+  title: string;
+  img: string;
+}
+export const LatestUpload = ({ title, img }: Props) => {
+  return (
+    <div className="w-full flex flex-col border p-2 rounded-md bg-slate-200 lg:max-w-96 h-full">
+      <div className="flex w-full justify-between">
+        <h3>Your latest upload</h3>
+        <EllipsisVertical
+          className="cursor-pointer"
+          size={24}
+          color="#0876BB"
+        />
+      </div>
+      <div className="flex flex-col">
+        <img
+          src={img}
+          alt="sample"
+          className="w-full h-52 object-contain m-0"
+        />
+        <h4 className="text-sm font-light my-1">{title}</h4>
+      </div>
+      <div className="text-sm text-[#0876bb] font-light flex gap-2">
+        <a
+          href="/analytics"
+          className="bg-[#0876bb] text-white p-1 indent-1 rounded-sm max-w-36 hover:opacity-60"
+        >
+          View Feed Analytics
+        </a>
+        <a
+          href="/edit"
+          className="bg-[#0876bb] text-white p-1 indent-1 rounded-sm max-w-36 hover:opacity-60"
+        >
+          <span className="flex items-center space-x-1">
+            <p>Edit</p>
+            <Pencil size={20} />
+          </span>
+        </a>
+      </div>
+    </div>
+  );
+};
