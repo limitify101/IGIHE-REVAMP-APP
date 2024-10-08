@@ -9,10 +9,7 @@ const Dashboard = () => {
   const [article, setArticle] = React.useState<Article>({ title: "" });
   React.useEffect(() => {
     async function fetchLastUpload() {
-      const results = await axios(
-        "http://localhost:8000/api/v1/news" ||
-          "http://192.168.1.64:8000/api/v1/news"
-      );
+      const results = await axios("http://localhost:8000/api/v1/news");
       const lastUpload = results.data;
       setArticle(lastUpload[lastUpload.length - 1]);
     }

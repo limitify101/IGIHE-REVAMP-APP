@@ -74,11 +74,7 @@ const Compose = () => {
   }
   async function postArticle(data: Object) {
     return await axios
-      .post(
-        "http://localhost:8000/api/v1/news/create" ||
-          "http://192.168.1.64:8000/api/v1/news/create",
-        data
-      )
+      .post("http://localhost:8000/api/v1/news/create", data)
       .then(() => {
         toast({
           title: "Article Created Successfully!",
