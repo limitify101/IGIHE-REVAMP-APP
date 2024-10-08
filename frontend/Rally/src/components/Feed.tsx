@@ -16,9 +16,7 @@ interface Feed {
 
 const Feed = () => {
   const [feeds, setFeeds] = useState([]);
-  const url =
-    // "http://localhost:8000/api/v1/news" ||
-    "http://192.168.1.64:8000/api/v1/news";
+  const url = "http://localhost:8000/api/v1/news";
   useEffect(() => {
     const fetchFeed = async () => {
       const request = await axios(url);
