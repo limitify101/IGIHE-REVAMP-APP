@@ -21,13 +21,10 @@ const FeedSchema = new mongoose.Schema({
     required: [true, "Must provide the content type"],
   },
   // thumbnail: {
-  //   filename: {
-  //     type: String,
+  //   type: String,
+  //   required: [true,"Must provide the content thumbnail"],
   //   },
-  //   contentType: {
-  //     type: String,
-  //     required: [true, "Must provide image type"],
-  //   },
+
   //   data: {
   //     type: String,
   //   },

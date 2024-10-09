@@ -12,13 +12,15 @@ interface Feed {
 }
 const Articles = () => {
   const [articles, setArticles] = React.useState([]);
+  const [errors, setErrors] = React.useState<string>();
   React.useEffect(() => {
     async function fetchArticles() {
-      const feed = await axios(
-        "http://localhost:8000/api/v1/news/" ||
-          "http://192.168.1.64:8000/api/v1/news"
-      );
-      setArticles(feed.data);
+      try {
+        const feed = await axios("http://localhost:8000/api/v1/news/");
+        setArticles(feed.data);
+      } catch (error: any) {
+        setErrors("Failed fetching articles");
+      }
     }
 
     fetchArticles();
@@ -33,8 +35,10 @@ const Articles = () => {
               <Article title={article?.title} img={img} />
             </div>
           ))
+        ) : errors ? (
+          <h3>{errors}</h3>
         ) : (
-          <h3>You have no articles created</h3>
+          <></>
         )}
       </div>
     </div>

@@ -39,6 +39,12 @@ import { useToast } from "@/components/ui/use-toast";
 type Input = z.infer<typeof registerSchema>;
 
 const Compose = () => {
+  const [file, setFile] = React.useState<any>();
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = event.target.files?.[0] || null;
+    setFile(selectedFile);
+  };
   const navigate = useNavigate();
   const { toast } = useToast();
   const [formStep, setFormStep] = React.useState(0);
@@ -51,6 +57,7 @@ const Compose = () => {
       description: "",
       content_text: "",
       content_type: "",
+      thumbnail: file,
     },
   });
   async function onSubmit(data: Input) {
@@ -209,6 +216,27 @@ const Compose = () => {
                         </FormControl>
                         <FormDescription>
                           This is a small description of your article
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="thumbnail"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Thumbnail</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="file"
+                            {...field}
+                            onChange={handleFileChange}
+                            value={file}
+                          />
+                        </FormControl>
+                        <FormDescription>
+                          This is the article's thumbnail
                         </FormDescription>
                         <FormMessage />
                       </FormItem>

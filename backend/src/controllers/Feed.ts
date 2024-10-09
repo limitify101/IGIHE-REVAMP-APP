@@ -26,8 +26,8 @@ export const deleteFeed = (req: Request, res: Response) => {
     msg: "Deleted feed successfully",
   });
 };
-
-const handleArticle = (obj: any, key: string): Object => {
+//Handle author names
+const handleArticleAuthor = (obj: any, key: string): Object => {
   const keys = Object.keys(obj);
   const idx = keys.indexOf(key);
   let article: Object;
@@ -46,7 +46,7 @@ const handleArticle = (obj: any, key: string): Object => {
 
 export const createFeed = async (req: Request, res: Response) => {
   try {
-    const feed = await Article.create(handleArticle(req.body, "author"));
+    const feed = await Article.create(handleArticleAuthor(req.body, "author"));
     return res.status(201).json(feed);
   } catch (error) {
     console.log(error);

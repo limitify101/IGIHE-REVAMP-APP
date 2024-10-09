@@ -12,6 +12,8 @@ export const registerSchema = z.object({
     .string()
     .min(30, { message: "Article must contain more than (30) characters" }),
   content_type: z.string(),
-  // thumbnail:z.instanceof(File).refine((file)=>file.size !== 0,"Please upload a thumbnail"),
+  thumbnail: z
+    .instanceof(File)
+    .refine((file) => file.size !== 0, "Please upload a thumbnail"),
   // images:z.instanceof(File).refine((file) => file.size !== 0, "Please upload an image"),
 });
