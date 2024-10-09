@@ -7,7 +7,7 @@ import Analytics from "./pages/Analytics";
 import Compose from "./pages/Compose";
 import Edit from "./pages/Edit";
 import { Toaster } from "@/components/ui/toaster";
-import Login from "./pages/Login";
+// import Login from "./pages/Login";
 
 function App() {
   return (
@@ -21,8 +21,7 @@ function App() {
             <SideBar>
               <main className="flex-1 p-3 h-fit overflow-y-auto">
                 <Routes>
-                  <Route path="/" element={<Login />} />
-                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/" element={<Dashboard />} />
                   <Route path="/create" element={<Compose />} />
                   <Route path="/analytics" element={<Analytics />} />
                   <Route path="/articles" element={<Articles />} />
